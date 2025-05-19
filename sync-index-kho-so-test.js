@@ -63,6 +63,17 @@ async function syncDataPaged() {
         console.log("Gửi dữ liệu lên Elasticsearch:", bulkBody[0]);
         const esResult = await elastic.bulk({ refresh: true, body: bulkBody });
         if (esResult.errors) {
+          if (esResult.errors) {
+            esResult.items.forEach((item, i) => {
+              const action = item.index || item.create || item.update || item.delete;
+              if (action && action.error) {
+                console.error(`❌ Lỗi tại bản ghi ${i}:`, {
+                  id: action._id,
+                  error: action.error
+                });
+              }
+            });
+          }
           console.error('Có lỗi khi gửi dữ liệu lên Elasticsearch:', esResult);
         } else {
           console.log(`Đã index ${rows.length} bản ghi.`);
