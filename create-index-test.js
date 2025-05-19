@@ -41,7 +41,6 @@ async function createIndexKhoSoTestElastic() {
       console.log(`✅ Đã tạo index "${indexName}"`);
     }
 
-    await connection.close();
   } catch (err) {
     console.error('❌ Lỗi:', err);
   }
