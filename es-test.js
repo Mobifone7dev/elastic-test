@@ -24,11 +24,11 @@ async function checkConnection() {
 async function searchAll() {
   try {
     const result = await client.search({
-      index: 'kho_so_test',
+      index: "kho_so_test",
       query: {
         regexp: {
-          TEL_NUMBER: {
-            value: '.*30$'
+          "TEL_NUMBER.keyword": {
+            value: ".*30$"
           }
         }
       },
