@@ -30,7 +30,7 @@ async function syncDataPaged() {
       const result = await connection.execute(
         `
         select * from KHO_SO_TEST
-        ORDER BY your_primary_key_column
+        ORDER BY tel_number
         OFFSET :offset ROWS
         FETCH NEXT :limit ROWS ONLY
         `,
@@ -52,7 +52,7 @@ async function syncDataPaged() {
         bulkBody.push({
           index: {
             _index: 'kho_so_test',
-            _id: row.TEL_NUMBER
+            _id: row.tel_number
           }
         });
 
