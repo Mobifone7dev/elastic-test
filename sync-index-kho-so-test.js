@@ -52,7 +52,7 @@ async function syncDataPaged() {
         bulkBody.push({
           index: {
             _index: 'kho_so_test',
-            _id: row.tel_number
+            _id: row._id
           }
         });
 
