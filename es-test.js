@@ -21,5 +21,27 @@ async function checkConnection() {
   }
 }
 
-checkConnection();
+async function searchAll() {
+  try {
+    const result = await client.search({
+      index: 'kho_so_test',
+      query: {
+        regexp: {
+          TEL_NUMBER: {
+            value: '.*30$'
+          }
+        }
+      },
+      size: 10  // Số lượng kết quả trả về (mặc định chỉ là 10)
+    });
+
+    console.log('📦 Kết quả:', result.hits.hits);
+  } catch (err) {
+    console.error('❌ Lỗi khi query:', err);
+  }
+}
+
+searchAll();
+
+// checkConnection();
 
