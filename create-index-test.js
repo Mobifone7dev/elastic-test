@@ -28,9 +28,9 @@ async function createIndexKhoSoTestElastic() {
         body: {
           mappings: {
             properties: {
-              TEL_NUMBER: { type: 'text' },
-              SPE_NUMBER_TYPE: { type: 'text' },
-              LOAI_CK: { type: 'text' },
+              TEL_NUMBER: { type: 'keyword' },
+              SPE_NUMBER_TYPE: { type: 'keyword' },
+              LOAI_CK: { type: 'keyword' },
               CHANGE_DATETIME: { type: 'date', 'format': 'yyyy-MM-dd HH:mm:ss||strict_date_optional_time||epoch_millis' },
               IS_HOLD: { type: 'keyword' },
               // thêm các field cần thiết tùy bảng bạn
