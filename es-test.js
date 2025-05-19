@@ -57,7 +57,7 @@ async function searchCondition() {
   }
 }
 
-searchAll();
-// searchCondition();
+// searchAll();
+searchCondition();
 // checkConnection();
 
