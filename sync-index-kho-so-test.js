@@ -60,9 +60,10 @@ async function syncDataPaged() {
       }
 
       if (bulkBody.length > 0) {
+        console.log("Gửi dữ liệu lên Elasticsearch:", bulkBody[0]);
         const esResult = await elastic.bulk({ refresh: true, body: bulkBody });
         if (esResult.errors) {
-          console.error('Có lỗi khi gửi dữ liệu lên Elasticsearch:', esResult.errors);
+          console.error('Có lỗi khi gửi dữ liệu lên Elasticsearch:', esResult);
         } else {
           console.log(`Đã index ${rows.length} bản ghi.`);
         }
