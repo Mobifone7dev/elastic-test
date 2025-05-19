@@ -26,6 +26,24 @@ async function searchAll() {
     const result = await client.search({
       index: "kho_so_test",
       query: {
+        query: {
+          match_all: {}
+        }
+      },
+      size: 10  // Số lượng kết quả trả về (mặc định chỉ là 10)
+    });
+
+    console.log('📦 Kết quả:', result.hits.hits);
+  } catch (err) {
+    console.error('❌ Lỗi khi query:', err);
+  }
+}
+
+async function searchCondition() {
+  try {
+    const result = await client.search({
+      index: "kho_so_test",
+      query: {
         regexp: {
           "TEL_NUMBER.keyword": {
             value: ".*30$"
@@ -42,6 +60,6 @@ async function searchAll() {
 }
 
 searchAll();
-
+// searchCondition();
 // checkConnection();
 
