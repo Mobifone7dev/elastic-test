@@ -42,9 +42,9 @@ async function searchCondition() {
     const result = await client.search({
       index: "kho_so_test",
       query: {
-        wildcard: {
+        regexp: {
           "TEL_NUMBER.keyword": {
-            value: ".*30$"
+            value: ".*87$"
           }
         }
       },
