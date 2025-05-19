@@ -65,7 +65,6 @@ async function syncDataPaged() {
         if (esResult.errors) {
           if (esResult.errors) {
             esResult.items.forEach((item, i) => {
-              console.log(`Bản ghi ${i}:`, item);
               const action = item.index || item.create || item.update || item.delete;
               if (action && action.error) {
                 console.error(`❌ Lỗi tại bản ghi ${i}:`, {
