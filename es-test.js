@@ -43,7 +43,7 @@ async function searchCondition() {
       index: "kho_so_test",
       query: {
         regexp: {
-          "TEL_NUMBER.keyword": {
+          TEL_NUMBER: {
             value: ".*87$"
           }
         }
