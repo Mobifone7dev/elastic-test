@@ -26,9 +26,7 @@ async function searchAll() {
     const result = await client.search({
       index: "kho_so_test",
       query: {
-        query: {
-          match_all: {}
-        }
+        match_all: {}
       },
       size: 10  // Số lượng kết quả trả về (mặc định chỉ là 10)
     });
