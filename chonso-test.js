@@ -89,7 +89,7 @@ async function getCount() {
 async function getMapping() {
     try {
         const result = await client.indices.getMapping({ index: 'chonso7' });
-        console.dir(result.body, { depth: null });
+        console.dir(result, { depth: null });
     } catch (err) {
         console.error('❌ Lỗi khi lấy mapping:', err);
     }
