@@ -22,7 +22,9 @@ async function checkConnection() {
 }
 
 async function searchAll() {
+
     try {
+        checkConnection();
         const result = await client.search({
             index: "chonso",
             query: {
