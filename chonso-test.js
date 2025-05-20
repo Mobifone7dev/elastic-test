@@ -59,7 +59,7 @@ async function searchCondition() {
             index: "chonso7",
             query: {
                 wildcard: {
-                    TEL_NUMBER: {
+                    TEL_NUMBER_KEY: {
                         value: '*7'
                     }
                 }
