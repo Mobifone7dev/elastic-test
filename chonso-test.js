@@ -87,8 +87,8 @@ async function getCount() {
 }
 
 // listIndices();
-searchAll();
-// searchCondition();
+// searchAll();
+searchCondition();
 // checkConnection();
-getCount();
+// getCount();
 
