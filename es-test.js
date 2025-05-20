@@ -57,7 +57,23 @@ async function searchCondition() {
   }
 }
 
+async function deleteData() {
+  try {
+    const result = await client.deleteByQuery({
+      index: 'kho_so_test',
+      query: {
+        match_all: {}
+      }
+    });
+
+    console.log('📦 Kết quả:', result.hits.hits);
+  } catch (err) {
+    console.error('❌ Lỗi khi query:', err);
+  }
+}
+
 // searchAll();
-searchCondition();
+// searchCondition();
 // checkConnection();
+deleteData();
 
