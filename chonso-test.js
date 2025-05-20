@@ -77,7 +77,7 @@ async function searchCondition() {
 async function getCount() {
     try {
         const result = await client.count({
-            index: 'chonso'
+            index: 'chonso7'
         });
 
         console.log(`📊 Tổng số documents: ${result.count}`);
