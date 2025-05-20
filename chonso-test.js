@@ -59,9 +59,7 @@ async function searchCondition() {
             index: "chonso7",
             query: {
                 wildcard: {
-                    TEL_NUMBER_KEY: {
-                        value: '*7'
-                    }
+                    'tel_number_key.keyword': '*87'
                 }
             },
             size: 10  // Số lượng kết quả trả về (mặc định chỉ là 10)
