@@ -90,5 +90,5 @@ async function getCount() {
 searchAll();
 // searchCondition();
 // checkConnection();
-// getCount();
+getCount();
 
