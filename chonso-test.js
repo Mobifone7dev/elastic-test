@@ -23,7 +23,11 @@ async function checkConnection() {
 async function listIndices() {
     try {
         const result = await client.cat.indices({ format: 'json' });
-        result.body.forEach(index => {
+
+        // Dữ liệu ở result.body (tuỳ version Elasticsearch client)
+        const indices = result.body || result;
+
+        indices.forEach(index => {
             console.log(`📦 Index: ${index.index}, Docs: ${index['docs.count']}`);
         });
     } catch (err) {
