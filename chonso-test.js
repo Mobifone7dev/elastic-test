@@ -38,10 +38,9 @@ async function listIndices() {
 async function searchAll() {
 
     try {
-        checkConnection();
 
         const result = await client.search({
-            index: "chonso",
+            index: "chonso7",
             query: {
                 match_all: {}
             },
@@ -87,8 +86,8 @@ async function getCount() {
     }
 }
 
-listIndices();
-// searchAll();
+// listIndices();
+searchAll();
 // searchCondition();
 // checkConnection();
 // getCount();
