@@ -1,7 +1,7 @@
 const { Client } = require('@elastic/elasticsearch');
 require('dotenv').config(); // Đọc biến môi trường từ .env
 const client = new Client({
-  node: 'http://localhost:9200',
+  node: 'http://localhost:8200',
   auth: {
     username: process.env.ELASTIC_USER,
     password: process.env.ELASTIC_PASSWORD
