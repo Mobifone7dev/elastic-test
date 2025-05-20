@@ -54,7 +54,7 @@ async function searchAll() {
 }
 
 async function searchCondition(formatNumber, typeNumber = null) {
-    cốonsole.log('formatNumber', formatNumber);
+    console.log('formatNumber', formatNumber);
     console.log('typeNumber', typeNumber);
     const mustConditions = [
         {
