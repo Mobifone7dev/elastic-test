@@ -56,7 +56,7 @@ async function searchAll() {
 async function searchCondition(formatNumber, typeNumber) {
     try {
         const result = await client.search({
-            index: 'tên_index_của_bạn',
+            index: 'chonso7',
             query: {
                 bool: {
                     must: [
