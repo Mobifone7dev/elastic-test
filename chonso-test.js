@@ -20,11 +20,22 @@ async function checkConnection() {
         console.error("Lỗi kết nối:", err.meta?.body || err);
     }
 }
+async function listIndices() {
+    try {
+        const result = await client.cat.indices({ format: 'json' });
+        result.body.forEach(index => {
+            console.log(`📦 Index: ${index.index}, Docs: ${index['docs.count']}`);
+        });
+    } catch (err) {
+        console.error('❌ Lỗi khi lấy danh sách index:', err);
+    }
+}
 
 async function searchAll() {
 
     try {
         checkConnection();
+
         const result = await client.search({
             index: "chonso",
             query: {
@@ -72,8 +83,8 @@ async function getCount() {
     }
 }
 
-
-searchAll();
+listIndices();
+// searchAll();
 // searchCondition();
 // checkConnection();
 // getCount();
