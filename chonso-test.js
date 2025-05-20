@@ -56,7 +56,7 @@ async function searchAll() {
 async function searchCondition() {
     try {
         const result = await client.search({
-            index: "chonso",
+            index: "chonso7",
             query: {
                 wildcard: {
                     TEL_NUMBER: {
