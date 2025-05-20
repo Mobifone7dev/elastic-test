@@ -66,7 +66,7 @@ async function deleteData() {
       }
     });
 
-    console.log('📦 Kết quả:', result.hits.hits);
+    console.log('📦 Kết quả:', result);
   } catch (err) {
     console.error('❌ Lỗi khi query:', err);
   }
