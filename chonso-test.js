@@ -95,8 +95,8 @@ async function getMapping() {
 
 // listIndices();
 // searchAll();
-// searchCondition();
+searchCondition();
 // checkConnection();
 // getCount();
-getMapping();
+// getMapping();
 
