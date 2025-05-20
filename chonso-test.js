@@ -73,7 +73,7 @@ async function searchCondition(formatNumber, typeNumber = null) {
                             term: {
                                 spe_number_type: typeNumber
                             }
-                        } : {}
+                        } : null
                     ]
                 }
             },
