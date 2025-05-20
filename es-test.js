@@ -71,9 +71,22 @@ async function deleteData() {
     console.error('❌ Lỗi khi query:', err);
   }
 }
+async function getCount() {
+  try {
+    const result = await client.count({
+      index: 'kho_so_test'
+    });
+
+    console.log(`📊 Tổng số documents: ${result.count}`);
+  } catch (err) {
+    console.error('❌ Lỗi khi đếm documents:', err);
+  }
+}
+
 
 // searchAll();
 // searchCondition();
 // checkConnection();
-deleteData();
+// deleteData();
+getCount();
 
