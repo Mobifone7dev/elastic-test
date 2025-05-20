@@ -1,7 +1,7 @@
 const { Client } = require('@elastic/elasticsearch');
 require('dotenv').config(); // Đọc biến môi trường từ .env
 const client = new Client({
-    node: 'http://localhost:8200',
+    node: process.env.ELASTIC_NODE,
     auth: {
         username: process.env.ELASTIC_USER,
         password: process.env.ELASTIC_PASSWORD
@@ -56,15 +56,24 @@ async function searchAll() {
 async function searchCondition() {
     try {
         const result = await client.search({
-            index: "chonso7",
+            index: 'tên_index_của_bạn',
             query: {
-                wildcard: {
-                    'tel_number_key.keyword': '769488990'
+                bool: {
+                    must: [
+                        {
+                            term: {
+                                'tel_number_key.keyword': { formatNumber }
+                            }
+                        },
+                        {
+                            term: {
+                                'spe_number_type.keyword': { typeNumber }
+                            }
+                        }
+                    ]
                 }
-            },
-            size: 10  // Số lượng kết quả trả về (mặc định chỉ là 10)
+            }
         });
-
         console.log('📦 Kết quả:', result.hits.hits);
     } catch (err) {
         console.error('❌ Lỗi khi query:', err);
@@ -125,7 +134,7 @@ async function updateIsHoldByTelNumber(telNumberKey, newValue) {
 
 // listIndices();
 // searchAll();
-searchCondition();
+searchCondition('*88', '7');
 // checkConnection();
 // getCount();
 // getMapping();
