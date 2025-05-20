@@ -53,7 +53,7 @@ async function searchAll() {
     }
 }
 
-async function searchCondition() {
+async function searchCondition(formatNumber, typeNumber) {
     try {
         const result = await client.search({
             index: 'tên_index_của_bạn',
