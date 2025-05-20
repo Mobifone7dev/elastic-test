@@ -54,10 +54,12 @@ async function searchAll() {
 }
 
 async function searchCondition(formatNumber, typeNumber = null) {
+    cốonsole.log('formatNumber', formatNumber);
+    console.log('typeNumber', typeNumber);
     const mustConditions = [
         {
             term: {
-                'tel_number_key.keyword': formatNumber
+                'tel_number_key.keyword': `${formatNumber}`
             }
         }
     ];
@@ -66,7 +68,7 @@ async function searchCondition(formatNumber, typeNumber = null) {
     if (typeNumber) {
         mustConditions.push({
             term: {
-                'spe_number_type.keyword': typeNumber
+                'spe_number_type.keyword': `${typeNumber}`
             }
         });
     }
