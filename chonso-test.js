@@ -62,12 +62,12 @@ async function searchCondition(formatNumber, typeNumber) {
                     must: [
                         {
                             term: {
-                                'tel_number_key.keyword': { formatNumber }
+                                'tel_number_key.keyword': formatNumber
                             }
                         },
                         {
                             term: {
-                                'spe_number_type.keyword': { typeNumber }
+                                'spe_number_type.keyword': typeNumber
                             }
                         }
                     ]
