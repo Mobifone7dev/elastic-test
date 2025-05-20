@@ -59,7 +59,7 @@ async function searchCondition() {
             index: "chonso7",
             query: {
                 wildcard: {
-                    'tel_number_key.keyword': '*88*99*'
+                    'tel_number_key.keyword': '769488990'
                 }
             },
             size: 10  // Số lượng kết quả trả về (mặc định chỉ là 10)
@@ -120,12 +120,12 @@ async function updateIsHoldByTelNumber(telNumberKey, newValue) {
     }
 }
 
-updateIsHoldByTelNumber('769488990', '1');
+// updateIsHoldByTelNumber('769488990', '1');
 
 
 // listIndices();
 // searchAll();
-// searchCondition();
+searchCondition();
 // checkConnection();
 // getCount();
 // getMapping();
