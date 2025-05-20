@@ -56,25 +56,30 @@ async function searchAll() {
 async function searchCondition(formatNumber, typeNumber = null) {
     console.log('formatNumber', formatNumber);
     console.log('typeNumber', typeNumber);
+
+    const mustQuery = [
+        {
+            wildcard: {
+                'tel_number_key.keyword': {
+                    value: formatNumber
+                }
+            }
+        }
+    ];
+
+    if (typeNumber) {
+        mustQuery.push({
+            term: {
+                'spe_number_type.keyword': typeNumber
+            }
+        });
+    }
     try {
         const result = await client.search({
             index: "chonso7",
             query: {
                 bool: {
-                    must: [
-                        {
-                            wildcard: {
-                                tel_number_key: {
-                                    value: formatNumber
-                                }
-                            }
-                        },
-                        typeNumber ? {
-                            term: {
-                                spe_number_type: typeNumber
-                            }
-                        } : null
-                    ]
+                    must: mustQuery
                 }
             },
             size: 10  // Số lượng kết quả trả về (mặc định chỉ là 10)
