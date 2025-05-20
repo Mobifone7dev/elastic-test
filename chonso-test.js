@@ -93,9 +93,39 @@ async function getMapping() {
     }
 }
 
+async function updateIsHoldByTelNumber(telNumberKey, newValue) {
+    try {
+        const result = await client.updateByQuery({
+            index: 'tên_index_của_bạn',
+            refresh: true,
+            body: {
+                script: {
+                    source: 'ctx._source.is_hold = params.newValue',
+                    lang: 'painless',
+                    params: {
+                        newValue: newValue
+                    }
+                },
+                query: {
+                    term: {
+                        'tel_number_key.keyword': telNumberKey
+                    }
+                }
+            }
+        });
+
+        console.log('✅ Kết quả cập nhật:', result);
+    } catch (err) {
+        console.error('❌ Lỗi khi cập nhật:', err);
+    }
+}
+
+updateIsHoldByTelNumber('769488990', '1');
+
+
 // listIndices();
 // searchAll();
-searchCondition();
+// searchCondition();
 // checkConnection();
 // getCount();
 // getMapping();
