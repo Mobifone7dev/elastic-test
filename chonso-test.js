@@ -96,7 +96,7 @@ async function getMapping() {
 async function updateIsHoldByTelNumber(telNumberKey, newValue) {
     try {
         const result = await client.updateByQuery({
-            index: 'tên_index_của_bạn',
+            index: 'chonso7',
             refresh: true,
             body: {
                 script: {
