@@ -53,24 +53,30 @@ async function searchAll() {
     }
 }
 
-async function searchCondition(formatNumber, typeNumber) {
+async function searchCondition(formatNumber, typeNumber = null) {
+    const mustConditions = [
+        {
+            term: {
+                'tel_number_key.keyword': formatNumber
+            }
+        }
+    ];
+
+    // Nếu có truyền typeNumber thì thêm điều kiện
+    if (typeNumber) {
+        mustConditions.push({
+            term: {
+                'spe_number_type.keyword': typeNumber
+            }
+        });
+    }
     try {
         const result = await client.search({
             index: 'chonso7',
             query: {
                 bool: {
-                    must: [
-                        {
-                            term: {
-                                'tel_number_key.keyword': formatNumber
-                            }
-                        },
-                        {
-                            term: {
-                                'spe_number_type.keyword': typeNumber
-                            }
-                        }
-                    ]
+                    must: mustConditions
+
                 }
             }
         });
@@ -134,7 +140,7 @@ async function updateIsHoldByTelNumber(telNumberKey, newValue) {
 
 // listIndices();
 // searchAll();
-searchCondition('*88', '7');
+searchCondition('*88', null);
 // checkConnection();
 // getCount();
 // getMapping();
